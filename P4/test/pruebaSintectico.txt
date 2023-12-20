@@ -1,0 +1,107 @@
+principal {
+    var
+        ente·ro ve;
+        real vf;
+        caracter vc;
+        booleano vl;
+        lista de entero list_e, list_e2;
+        lista de real list_f, list_f2;
+        lista de caracter list_c, list_c2;
+        lista de booleano list_l;
+    finvar
+
+    entero funcionA(entero a1, real a2, caracter a3){
+        var 
+            entero x1, x2;
+        finvar
+        
+        caracter funcionB(caracter b1, booleano b2){
+            var
+                real xf, x2;
+            finvar
+
+            real funcionC(booleano c1, entero c2){
+                var
+                    real x1;
+                finvar
+                
+                x1 = 1.3;
+                si (c2 > 10)
+                    c2 = c2 - 1;
+                sino
+                    x1 = 3.1;
+                devuelve x1;
+            }
+
+            xf = functionC(true, 10);
+            x2 = xf * (funcionC(false, 1) - funcionC(true, 23)) / 10.0;
+
+            repite{
+                x2 = x2 * xf;
+            }
+            hasta(x2 * funcionC(false, 1) - xf < 10.0);
+                
+        }
+
+        real funcionD(real d1){
+            var
+                caracter dato;
+                entero valor;
+                entero index;
+            finvar
+
+            caracter funcionE(caracter e1, caracter e2){
+                cout <<< "Introduce dos caracteres :";
+                cin >>> e1, e2;
+                si (e1 == 'a')
+                    devuelve e1;
+                sino si (e1 == 'b')
+                    devuelve e2;
+                sino
+                    devuelve ' ';
+            }
+
+            cout <<< "Introduce un entero";
+            cin >>> valor;
+            si (d1 > 0.0){
+                var
+                    entero dato;
+                finvar
+                
+                dato = 2;
+                dato = valor * 20 / dato;
+            }sino{
+                valor = valor * 100;
+                d1 = d1 / 1000.0;
+            }
+            devuelve d1;
+            
+        }
+
+    
+        list_e = list_e @ 0 ~ 10;
+        list_f = list_f @ 0 ~ 10.0;
+        list_c = list_c @ 0 ~ 'A';
+        
+
+        index = 0;
+
+        repite{
+            list_e = list_e @ index ~ index;
+            index = index +1;
+        }hasta(#list_e == 10);
+
+        index = 0;
+        $list_e;
+        repite{
+            cout <<< "Elemento: ";
+            cout <<< ?list_e;
+            list_e>>;
+            index = index +1;
+        }hasta(#list_e == index);
+
+        list_res = list_e * 2;
+
+    }
+}
+    
