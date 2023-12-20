@@ -62,17 +62,10 @@ void yyerror ( const char * msg ) ;
 %token NOMB_ENTRADA
 %token NOMB_SALIDA
 %token LISTA_SENT_DER LISTA_SENT_IZQ
-%token EXPR_LISTA_IZQ
-%token EXPR_LISTA_DER
 %token OP_UN_DELANTE
 %token OP_BIN_TERN_PRIM
-%token OP_BIN_TERN_SEG
-%token OP_BINARIO 
-%token OP_UNARIO 
-%token OP_UN_BIN
 %token IDENTIFICADOR
 %token CADENA
-/* %token CONSTANTE */
 %token PAR_IZQ
 %token PAR_DER
 %token CORCH_IZQ
@@ -90,8 +83,6 @@ void yyerror ( const char * msg ) ;
 %token OP_LOGICOS_OR
 %token OP_LOGICOS_AND // && || != ==
 
-%token OP_BINARIO_LISTAS // %
-%token OP_TER_LIST
 
 %start programa
 
@@ -111,7 +102,7 @@ void yyerror ( const char * msg ) ;
 %right OP_MAS_MAS
 %right LISTA_SENT_IZQ LISTA_SENT_DER
 
-//%right OP_UN_DELANTE
+%right OP_UN_DELANTE
 
 
 %left CONST_INT CONST_FLOAT CONST_BOOL CONST_CHAR IDENTIFICADOR
@@ -211,7 +202,7 @@ expresion : OP_UN_NEG expresion { Check_OpUnaryNeg($1, $2, &$$); }
           | OP_MAS_MAS expresion { Check_IncrementDecrement($1, $2, &$$); }
           | OP_MENOS_MENOS expresion { Check_IncrementDecrement($1, $2, &$$); }
           | expresion OP_MAS_MENOS expresion { Check_PlusMinusBinary($1, $2, $3, &$$); }
-          | OP_MAS_MENOS expresion  %prec OP_UN_NEG { Check_PlusMinus($1, $2, &$$); }
+          | OP_MAS_MENOS expresion  %prec OP_UN_DELANTE { Check_PlusMinus($1, $2, &$$); }
           | expresion OP_BIN_MULTDIV expresion { Check_OpBinaryMul($1, $2, $3, &$$); }
           | expresion OP_LOGICOS_AND expresion { Check_OpBinaryAndOr($1, $2, $3, &$$); }
           | expresion OP_LOGICOS_OR expresion { Check_OpBinaryAndOr($1, $2, $3, &$$); }

@@ -53,7 +53,6 @@ void yyerror();
 "--"                { yylval.attr = 0; return OP_MENOS_MENOS; }
 
 "@"                 { /*yylval.lex = strdup(yytext);*/ return OP_BIN_TERN_PRIM; }
-"~"                 { /*yylval.lex = strdup(yytext);*/ return OP_TER_LIST; } /*Operador para resolver conclicto*/
 
 "%"                 { /*yylval.lex = strdup(yytext);*/ yylval.attr = 0; return OP_BIN_MULTDIV; }
 "*"                 { /*yylval.lex = strdup(yytext);*/ yylval.attr = 1; return OP_BIN_MULTDIV; }
@@ -69,13 +68,9 @@ void yyerror();
 ">="                { /*yylval.lex = strdup(yytext);*/ yylval.attr = 3; return OP_RELACION; }
 
 "&&"                { /*yylval.lex = strdup(yytext);*/ return OP_LOGICOS_AND; }
-"||"                { /*yylval.lex = strdup(yytext);*/ return OP_LOGICOS_OR; }/*
+"||"                { /*yylval.lex = strdup(yytext);*/ return OP_LOGICOS_OR; }
 
-"^"                 { *//*yylval.lex = strdup(yytext);*/ /*yylval.attr = 0; return OP_BINARIO; } -------------------*/
-
-"!"                 { /*yylval.lex = strdup(yytext);*/ yylval.attr = 2; return OP_UN_NEG; }/*
-
-"—"                 { *//*yylval.lex = strdup(yytext);*/ /*yylval.attr = 1; return OP_UNARIO; } -------------------------*/
+"!"                 { /*yylval.lex = strdup(yytext);*/ yylval.attr = 2; return OP_UN_NEG; }
 
 "?"                 { /*yylval.lex = strdup(yytext);*/ yylval.attr = 0; return OP_UN_QUEST; }
 "#"                 { /*yylval.lex = strdup(yytext);*/ yylval.attr = 1; return OP_UN_SHARP; } /*//CAMBIOS "#"                 { return OP_UNARIO; }*/
